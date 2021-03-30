@@ -20,6 +20,10 @@
       <input type="file" name="image">
       <button type="submit">Upload</button>
 
+      {% if url %}
+        <p><a href="{{url}}">{{url}}</a></p>
+      {%endif%}
+
     
     </form>
 
