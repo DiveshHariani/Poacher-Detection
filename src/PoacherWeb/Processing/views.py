@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import PoacherImage
 from .forms import *
@@ -28,6 +28,10 @@ def upload(request):
         name = fs.save(uploaded_file.name,uploaded_file)
         context['url'] = fs.url(name)
         probability = firstModel.determineProbability(uploaded_file.name)
+        context['probability']=probability
         print(probability)
+        return redirect('/Processing/result',context)
     return render(request,'Processing.html')
 
+def result(request):
+    return render(request,'Result.html')
