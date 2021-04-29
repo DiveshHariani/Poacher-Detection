@@ -1,14 +1,36 @@
-<!DOCTYPE html>
+<!DOCTYPE html> {% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Result</title>
 </head>
 <body>
+    <div class="container-fluid" style="padding: 0px; border: 2px solid red; margin: 0px; text-align: center;">
+      <h1> Results </h1>
+      <div class="container">
+        {% if video %}
+          <video width="400" controls>
+              <source src="{{ output_path }}" type="video/mp4">
+              Your browser does not support HTML video.
+          </video>
+          <object data="{{ output_path }}" width="360" height="250"> <param name="src" value="{{ output_path }}" /> </object>
+        {% else %}
+          {% if bool %}
+            <h1>A human was detected</h1>
+            <img src="{{output_path}}">
+          {% else %}
+            <h1>A human was detected</h1>
+            <img src="{{output_path}}" style="width: 400px; height: 400px; object-fit: contain;">
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+
+
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4" style="color:red;">Jumbotron</h1>
-        <p class="lead">This is a test jumbotron</p>
+        <h1 class="display-4" style="color:red;">Jumbotron {{output_path}}</h1>
+        
       </div>
     </div>
 </body>

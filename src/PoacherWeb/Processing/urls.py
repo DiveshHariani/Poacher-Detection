@@ -5,5 +5,6 @@ from . import views
 urlpatterns = [
     path('', views.upload, name='index'),
     path('result',views.result,name='result'),
-    # path('process', views.upload)
+    path('videoUpload', views.videoUpload, name='video_upload'),
+    path('videoProcess/', views.videoProcess, name='video_process')
 ]
